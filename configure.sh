@@ -8,7 +8,9 @@ FLAGS="--enable-debug --enable-experimental"
 
 CFL=0
 PVQ=0
-while getopts "::c --long cfl::p --long pvq" opt; do
+DAALA_DCT=0
+LIMIT=0
+while getopts ":c --long cfl:p --long pvq:d --long daaladct:l --long limit_4x4:" opt; do
   case $opt in
     c)
       CFL=1
@@ -17,6 +19,11 @@ while getopts "::c --long cfl::p --long pvq" opt; do
     p)
       PVQ=1
       ;;
+    d)
+      DAALA_DCT=1
+      ;;
+    l)
+      LIMIT=1
   esac
 done
 
@@ -26,6 +33,12 @@ if [ $CFL == 1 ]; then
 fi
 if [ $PVQ == 1 ]; then
   FLAGS=$FLAGS" --enable-pvq"
+fi
+if [ $DAALA_DCT == 1 ]; then
+  FLAGS=$FLAGS" --enable-daala_dct"
+fi
+if [ $LIMIT == 1 ]; then
+  FLAGS=$FLAGS" --enable-limit_4x4"
 fi
 
 if [ -f ./Makefile ]; then
