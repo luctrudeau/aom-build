@@ -21,7 +21,6 @@ USE_C_TX=0
 UV_DC_PRED_ONLY=0
 SANITIZE=0
 
-# Transform long options to short ones
 for arg in "$@"; do
   shift
   case "$arg" in
