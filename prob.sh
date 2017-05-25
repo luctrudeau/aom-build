@@ -1,7 +1,7 @@
 #!/bin/bash
 
 QP=43
-SUBSET="subset1"
+SUBSET="subset3"
 VIDEO_FOLDER=/home/ltrudeau/Videos/${SUBSET}-y4m
 
 # You better have more than 1 CPU if you are going to run this
