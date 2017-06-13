@@ -5,7 +5,7 @@ set -e
 AWCY_FLAGS=" --enable-av1 --disable-unit-tests --disable-docs --enable-inspection --enable-accounting --enable-analyzer"
 
 # Fail on asserts
-FLAGS="--enable-debug --enable-experimental --disable-cdef --enable-aom_highbitdepth"
+FLAGS="--enable-debug --enable-experimental --enable-aom_highbitdepth"
 
 # Sanitizer Flags
 SAN_CFLAGS="-fsanitize=address,undefined -Wformat -Werror=format-security -Werror=array-bounds -g"

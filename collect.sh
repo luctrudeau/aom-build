@@ -16,7 +16,9 @@ if [ $SUBSET1 == 1 ]; then
 fi
 
 if [ -z $VIDEO_FOLDER ]; then
-  VIDEO_FOLDER=~/Videos/fast-test-y4m
+#  VIDEO_FOLDER=~/Videos/fast-test-y4m
+#  VIDEO_FOLDER=~/Videos/fast-422-y4m
+  VIDEO_FOLDER=~/Videos/fast-sub1-y4m
 fi
 
 JOB_NAME=$1
@@ -33,6 +35,8 @@ AOM_ROOT=$(pwd)
 export TOOLS_ROOT
 export AOM_ROOT
 
+EXTRA_OPTS+=" --limit=1"
+echo $EXTRA_OPTS
 export EXTRA_OPTS=$EXTRA_OPTS
 
 RANGE="20 32 43 55"

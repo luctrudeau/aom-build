@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-#SEQ=~/Videos/hamilton.y4m
-SEQ=~/Videos/testsrc-1frame.y4m
+SEQ=~/Videos/hamilton.y4m
+#SEQ=~/Videos/testsrc-1frame.y4m
 #SEQ=~/Videos/meerkat_444.y4m
 #SEQ=~/Videos/ducks_take_off_444_720p50_frame1.y4m
 #SEQ=~/Videos/PerfectMeerkat.y4m
@@ -24,6 +24,7 @@ FRUIT=0
 VALGRIND=0
 PERF=0
 GDB=0
+CHROMA422=0
 
 for arg in "$@"; do
   shift
@@ -35,6 +36,7 @@ for arg in "$@"; do
     "--valgrind") VALGRIND=1 ;;
     "--perf") PERF=1 ;;
     "--gdb") GDB=1 ;;
+    "--422") CHROMA422=1 ;;
     *)        set -- "$@" "$arg"
   esac
 done
@@ -54,7 +56,7 @@ if [ $FRUIT == 1 ]; then
 fi
 VALGRIND_CMD=""
 if [ $VALGRIND == 1 ]; then
-  VALGRIND_CMD="valgrind --leak-check=full --vgdb-error=1 --show-leak-kinds=all"  # --track-origins=yes "
+  VALGRIND_CMD="valgrind --tool=exp-sgcheck" #--vgdb-error=1 --show-leak-kinds=all"  # --track-origins=yes "
 fi
 PERF_CMD=""
 if [ $PERF == 1 ]; then
@@ -63,6 +65,9 @@ fi
 GDB_CMD=""
 if [ $GDB == 1 ]; then
   GDB_CMD="gdb -ex=r --args "
+fi
+if [ $CHROMA422 == 1 ]; then
+  SEQ=~/Videos/football_422_ntsc.y4m
 fi
 
 #QP=63
